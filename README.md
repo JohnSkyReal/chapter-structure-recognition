@@ -25,7 +25,8 @@ data and codes of chapter structure recognition on PLOS ONE
 
 11.RNN、Bi-LSTM、IDCNN模型 tensorflow <= 1.8.0
 
-12.BERT、BERT-Bi-LSTM-CRF模型 tensorflow >= 1.12.0
+12.BERT、BERT-Bi-LSTM-CRF模型 tensorflow >= 1.12.0   
+
 
 
 
