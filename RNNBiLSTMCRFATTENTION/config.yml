@@ -1,0 +1,64 @@
+model: POS Tagging
+model_params:
+    hidden_dim: 200
+    batch_size: 64
+    is_attention: True
+
+    epoch_num: 100
+    max_patience: 5 #eairlystop参数
+    char_embed: True
+    num_layers: 2 #bilstm层数
+    feature_nums: 1  #特征列数，最后一列标签不算
+    embed_params:
+    #每一列特征的参数
+    -   dropout_rate: 0.5
+        dimension: 100
+        pre_train: True
+        path: '../../Data/wordvec.txt' #请使用gensim 存为 txt。注：非二进制文件，格式为头一行： 词数 维度 ，后面的： 词  emdedding
+
+    use_crf: True
+    rnn_unit: 'lstm'  # 'lstm' or 'gru'
+    optimizer: 'Adam'
+    learning_rate: 0.001
+    clip: 5
+
+    dropout_rate: 0.5
+    path_save: 'modeloutput/lstm_crf_attention'
+
+
+
+data_params:
+    feature_params:
+    -   min_count: 5
+        voc_path: './voc/f1_dic.pkl'
+        embed_path: './voc/f1_embed.pkl'
+
+
+    label2id: #tag2label = {"O": 0, "B词首": 1, "M词中": 2, "E词尾": 3,"S单字":4} 标签可以改，但顺序就按这个来，不然要去改get_chunks函数（用于计算f值的）
+        'O': 0
+        'B-I': 1
+        'I-I': 2
+        'E-I': 3
+        'S-I': 4
+        'B-M': 5
+        'I-M': 6
+        'E-M': 7
+        'S-M': 8
+        'B-D': 9
+        'I-D': 10
+        'E-D': 11
+        'S-D': 12
+        'B-R': 13
+        'I-R': 14
+        'E-R': 15
+        'S-R': 16
+        'B-RD': 17
+        'I-RD': 18
+        'E-RD': 19
+        'S-RD': 20
+
+
+
+    path_train: '../../Data/train1.txt'
+    path_test: '../../Data/test1.txt'
+

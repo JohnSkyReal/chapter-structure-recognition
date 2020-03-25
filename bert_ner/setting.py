@@ -1,0 +1,2 @@
+LABELS=["B-I", "I-I", "E-I", "B-R", "I-R", "E-R", "B-M", "I-M", "E-M", "B-D", "I-D", "E-D", "B-RD", "I-RD", "E-RD", "B-MR", "I-MR", "E-MR", "O", "X", "[CLS]", "[SEP]"]
+#LABELS=['S-software', 'B-software', 'I-software', 'E-software', 'M-software', 'S', "O", "X", "[CLS]", "[SEP]"]
